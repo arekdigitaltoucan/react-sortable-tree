@@ -493,7 +493,7 @@ class ReactSortableTree extends Component {
 
   renderRow(
     { node, parentNode, path, lowerSiblingCounts, treeIndex },
-    { listIndex, style, getPrevRow, matchKeys, swapFrom, swapDepth, swapLength }
+    { listIndex, style, getPrevRow, matchKeys, swapFrom, swapDepth, swapLength, parentGrid }
   ) {
     const {
       canDrag,
@@ -540,6 +540,7 @@ class ReactSortableTree extends Component {
         swapFrom={swapFrom}
         swapLength={swapLength}
         swapDepth={swapDepth}
+        parentGrid={parentGrid}
         {...sharedProps}
       >
         <NodeContentRenderer
@@ -660,8 +661,9 @@ class ReactSortableTree extends Component {
                         path: rows[index].path,
                       })
               }
-              rowRenderer={({ index, style: rowStyle }) =>
+              rowRenderer={({ index, style: rowStyle, parent }) =>
                 this.renderRow(rows[index], {
+                  parentGrid: parent,
                   listIndex: index,
                   style: rowStyle,
                   getPrevRow: () => rows[index - 1] || null,
