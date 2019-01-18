@@ -54,14 +54,14 @@ const config = {
     new webpack.EnvironmentPlugin({ NODE_ENV: 'production' }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Use uglify for dead code removal
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      mangle: false,
-      beautify: true,
-      comments: true,
-    }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false,
+    //   },
+    //   mangle: false,
+    //   beautify: true,
+    //   comments: true,
+    // }),
     new ExtractTextPlugin('style.css'),
   ],
   module: {
